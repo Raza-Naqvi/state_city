@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "83536655-240e-49fc-98c0-144a878ac69e",
+		"name": "State City",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17739553",
+		"_collection_link": "https://dark-moon-587817.postman.co/workspace/My-Workspace~a7e78725-3917-47dc-8492-12c14f8d43fe/collection/17739553-83536655-240e-49fc-98c0-144a878ac69e?action=share&source=collection_link&creator=17739553"
+	},
+	"item": [
+		{
+			"name": "State",
+			"item": [
+				{
+					"name": "Create State",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{liveBase}}state/create",
+							"host": [
+								"{{liveBase}}state"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "city",
+			"item": [
+				{
+					"name": "Create city",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"state\": \"\",\r\n    \"country\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}city/create",
+							"host": [
+								"{{baseUrl}}city"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get State",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{liveBase}}states",
+							"host": [
+								"{{liveBase}}states"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		},
+		{
+			"key": "liveBase",
+			"value": ""
+		}
+	]
+}
