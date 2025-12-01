@@ -6,10 +6,17 @@ class DB
     public static function connect()
     {
         if (!self::$instance) {
-            $host = "localhost";
-            $db   = "national_state_city";
-            $user = "national_andy";
-            $pass = "hPl@ptop"; // default XAMPP password
+            // for cPanel
+            // $host = "localhost";
+            // $db   = "national_state_city";
+            // $user = "national_andy";
+            // $pass = "hPl@ptop";
+
+            // for local PC
+            $host = "127.0.0.1";
+            $db   = "country_state_city";
+            $user = "root";
+            $pass = "";
 
             try {
                 self::$instance = new PDO(

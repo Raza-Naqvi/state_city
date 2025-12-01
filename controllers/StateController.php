@@ -56,4 +56,44 @@ class StateController
             echo json_encode(["success" => false, "error" => $e->getMessage()]);
         }
     }
+
+    public function getStatesByCountry()
+    {
+        try {
+            if (!isset($_GET['country']) || empty($_GET['country'])) {
+                echo json_encode([
+                    "success" => false,
+                    "error" => "country param is required"
+                ]);
+                return;
+            }
+
+            $country = strtolower($_GET['country']);
+
+            $stateService = new StateService();
+            $states = $stateService->getStates();
+
+            $result = [];
+
+            foreach ($states as $state) {
+                if (strtolower($state["country"]) === $country) {
+                    $result[] = [
+                        "name" => $state["name"],
+                        "country" => $state["country"]
+                    ];
+                }
+            }
+
+            echo json_encode([
+                "success" => true,
+                "country" => $_GET['country'],
+                "states" => $result
+            ]);
+        } catch (Exception $e) {
+            echo json_encode([
+                "success" => false,
+                "error" => $e->getMessage()
+            ]);
+        }
+    }
 }

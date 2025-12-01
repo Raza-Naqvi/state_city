@@ -26,4 +26,43 @@ class CityController
             echo json_encode(["success" => false, "error" => $e->getMessage()]);
         }
     }
+
+    public function getCitiesByState()
+    {
+        try {
+            if (!isset($_GET['state']) || empty($_GET['state'])) {
+                echo json_encode([
+                    "success" => false,
+                    "error" => "state param is required"
+                ]);
+                return;
+            }
+
+            $stateParam = strtolower($_GET['state']);
+
+            $cities = $this->service->getCities();
+            $result = [];
+
+            foreach ($cities as $city) {
+                if (strtolower($city['state']) === $stateParam) {
+                    $result[] = [
+                        "name" => $city['name'],
+                        "state" => $city['state'],
+                        "country" => $city['country']
+                    ];
+                }
+            }
+
+            echo json_encode([
+                "success" => true,
+                "state" => $_GET['state'],
+                "cities" => $result
+            ]);
+        } catch (Exception $e) {
+            echo json_encode([
+                "success" => false,
+                "error" => $e->getMessage()
+            ]);
+        }
+    }
 }
